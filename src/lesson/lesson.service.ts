@@ -11,6 +11,10 @@ export class LessonService {
         private lessonRepository: Repository<Lesson> //The right way to do this is to create a repository file on its own
     ) { }
 
+    async getLesson(id: string): Promise<Lesson> {
+        return this.lessonRepository.findOne({ id });
+    }
+
     async createLesson(name, startDate, endDate): Promise<Lesson> {
         const lesson = this.lessonRepository.create({
             id: uuid(),

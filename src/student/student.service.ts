@@ -12,9 +12,14 @@ export class StudentService {
         private studentRepository: Repository<Student>
     ) { }
 
+    async getStudent(id: string): Promise<Student> {
+        return this.studentRepository.findOne({ id });
+    }
+
     async getStudents(): Promise<Student[]> {
         return this.studentRepository.find();
     }
+
 
     async createStudent(createStudentInput: CreateStudentInput): Promise<Student> {
         const { firstName, lastName } = createStudentInput;

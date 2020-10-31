@@ -10,6 +10,11 @@ export class StudentResolver {
         private studentService: StudentService
     ) { }
 
+    @Query(returns => StudentType)
+    student(@Args('id') id: string) {
+        return this.studentService.getStudent(id);
+    }
+
     @Query(returns => [StudentType])
     students() {
         return this.studentService.getStudents();
